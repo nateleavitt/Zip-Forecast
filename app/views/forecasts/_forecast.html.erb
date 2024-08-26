@@ -8,7 +8,7 @@
       </div>
       <div class="w-full flex flex-col text-sm justify-center">
         <div><span class="text-xs">conditions:</span> <%= forecast.weather_data[:current][:condition] %></div>
-        <div><span class="text-xs">location:</span> <%= forecast.street %> <%= forecast.city %>, <%= forecast.state %> <%= forecast.zip_code %></div>
+        <div><span class="text-xs">location:</span> <%= forecast.weather_data[:current][:location] %></div>
         <div><span class="text-xs">updated:</span> <%= forecast.weather_data[:current][:last_updated] %></div>
       </div>
     </div>
