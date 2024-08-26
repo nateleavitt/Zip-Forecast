@@ -2,7 +2,7 @@ class Forecast
   include ActiveModel::Model
 
   # Attributes
-  attr_accessor :street, :city, :state, :zip_code
+  attr_accessor :street, :city, :state, :zip_code, :weather_data
 
   # Validations
   validates :street, :city, :state, :zip_code, presence: true

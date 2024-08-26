@@ -1,4 +1,4 @@
-<%= turbo_stream.prepend "forecasts" do %>
+<%= turbo_stream.replace "forecast-weather" do %>
   <%= render "forecast", forecast: @forecast %>
 <% end %>
 <%= turbo_stream.replace "#{dom_id(Forecast.new)}_form" do %>

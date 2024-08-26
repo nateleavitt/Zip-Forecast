@@ -1,3 +1,29 @@
-<li class="py-2 px-4 border-b border-gray-300">
-  <%= forecast.street %> <%= foreacast.city %>, <%= forecast.state %> <%= forecast.zip_code %>
-</li>
+<div id="forecast-weather">
+  <h3 class="font-bold mb-2">Current Conditions</h3>
+  <div class="w-full bg-white py-2 px-0 sm:px-4 border border-gray-200 bg-w rounded my-4">
+    <div class="flex flex-row">
+      <div class="w-1/4 text-center">
+        <img class="center" width="64" src="<%= forecast.weather_data[:current][:icon] %>" />
+        <div class="text-3xl font-bold mb-4"><%= forecast.weather_data[:current][:temperature] %></div>
+      </div>
+      <div class="w-full flex flex-col text-sm justify-center">
+        <div><span class="text-xs">conditions:</span> <%= forecast.weather_data[:current][:condition] %></div>
+        <div><span class="text-xs">location:</span> <%= forecast.street %> <%= forecast.city %>, <%= forecast.state %> <%= forecast.zip_code %></div>
+        <div><span class="text-xs">updated:</span> <%= forecast.weather_data[:current][:last_updated] %></div>
+      </div>
+    </div>
+  </div>
+  <h3 class="font-bold">Upcoming Forecast</h3>
+  <div class="flex flex-row">
+    <% forecast.weather_data[:days].each_with_index do |day, indx| %>
+      <div class="w-full sm:w-1/4 bg-white text-center py-2 px-0 sm:px-4 border border-gray-200 bg-w rounded mx-2 my-4">
+        <div class="text-xs text-gray-600">
+          <% if indx == 0%> Today <% else %> <%= day[:date] %> <% end %>
+        </div>
+        <img class="center" src="<%= day[:icon] %>" />
+        <div class="text-amber-600"><%= day[:max_temp] %></div>
+        <div class="text-sky-600"><%= day[:min_temp] %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
