@@ -10,6 +10,7 @@
         <div><span class="text-xs">conditions:</span> <%= forecast.weather_data[:current][:condition] %></div>
         <div><span class="text-xs">location:</span> <%= forecast.weather_data[:current][:location] %></div>
         <div><span class="text-xs">updated:</span> <%= forecast.weather_data[:current][:last_updated] %></div>
+        <div><span class="text-xs">cached?:</span> <%= forecast.weather_data[:cached] ? 'true' : 'false' %></div>
       </div>
     </div>
   </div>

@@ -23,5 +23,12 @@ module ZipForecast
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Memcached settings
+    config.action_controller.perform_caching = true
+    config.cache_store =
+      :mem_cache_store,
+      "#{ENV['MEMCACHED_SERVICE_HOST']}:#{ENV['MEMCACHED_SERVICE_PORT']}",
+      { compress: true, namespace: "app", raise_erros: true }
   end
 end
