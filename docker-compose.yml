@@ -1,0 +1,23 @@
+services:
+
+  memcached:
+    image: memcached:1.5-alpine
+    command: memcached -m 64
+    ports:
+      - 11211:11211
+
+  app:
+    build: .
+    user: root
+    env_file: .env
+    working_dir: /mnt/app
+    # command: bin/rails server
+    command: bin/rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/mnt/app
+    ports:
+      - 3000:3000
+    links:
+      - memcached
+    depends_on:
+      - memcached
