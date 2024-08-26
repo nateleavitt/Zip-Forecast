@@ -65,7 +65,7 @@ module WeatherManager
         else
           # Log the error if the request fails
           Rails.logger.error("Weather API request failed: #{response}")
-          return nil # TODO: could return a custom error object/message
+          return false # TODO: could return a custom error object/message
         end
       end
     end
