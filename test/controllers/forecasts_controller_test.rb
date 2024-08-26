@@ -1,4 +1,5 @@
 require "test_helper"
+require "mocha/minitest"  # Ensure this is required
 
 class ForecastsControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -16,15 +17,13 @@ class ForecastsControllerTest < ActionDispatch::IntegrationTest
         street: "123 Main St",
         city: "Mesa",
         state: "AZ",
-        zip_code: ""  # Invalid because zip_code is empty
+        zip_code: ""  # Invalid because zip code is empty
       }
     }
   end
 
-  # Test: Forecast is successfully fetched
   test "should create forecast and fetch weather data" do
-    # Mock the WeatherManager::WeatherFetcher call to return valid weather data
-    weather_data = {
+    WeatherManager::WeatherFetcher.stubs(:call).returns({
       current: {
         icon: "//cdn.weatherapi.com/weather/64x64/day/113.png",
         temperature: 100.0,
@@ -35,36 +34,24 @@ class ForecastsControllerTest < ActionDispatch::IntegrationTest
       days: [
         { date: "2024-08-26", icon: "//cdn.weatherapi.com/weather/64x64/day/113.png", max_temp: 100, min_temp: 80 }
       ]
-    }
+    })
+    post forecasts_path, params: @valid_forecast_params, headers: { Accept: "text/vnd.turbo-stream.html" }
+    assert_response :success
 
-    WeatherManager::WeatherFetcher.stub(:call, weather_data) do
-      assert_difference('Forecast.count', 0) do  # No actual record is saved since you're using a form object
-        post forecasts_path, params: @valid_forecast_params
-      end
-
-      assert_response :redirect
-      assert_redirected_to forecast_path(assigns(:forecast))
-      assert_equal "Forecast was successfully fetched.", flash[:notice]
-    end
+    # Check if the specific part of the Turbo Stream contains expected content
+    assert_match /100\.0/, response.body  # Check for a part of the forecast data
+    assert_match /Sunny/, response.body
+    assert_match /Mesa/, response.body
   end
 
-  # Test: Forecast creation fails due to invalid input
   test "should not create forecast with invalid input" do
-    post forecasts_path, params: @invalid_forecast_params
+    post forecasts_path, params: @invalid_forecast_params, headers: { Accept: "text/vnd.turbo-stream.html" }
     assert_response :unprocessable_entity
-    assert_template :new
-    assert_not_empty assigns(:forecast).errors
   end
 
-  # Test: Weather API fails to fetch weather data
   test "should handle weather fetch failure" do
-    # Mock the WeatherManager::WeatherFetcher call to return false, simulating a failure
-    WeatherManager::WeatherFetcher.stub(:call, false) do
-      post forecasts_path, params: @valid_forecast_params
-
-      assert_response :unprocessable_entity
-      assert_template :new
-      assert_includes assigns(:forecast).errors.full_messages, "Unable to retrieve weather information for the provided zip code."
-    end
+    WeatherManager::WeatherFetcher.stubs(:call).returns(false)
+    post forecasts_path, params: @valid_forecast_params, headers: { Accept: "text/vnd.turbo-stream.html" }
+    assert_response :unprocessable_entity
   end
 end

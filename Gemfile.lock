@@ -144,6 +144,8 @@ GEM
     matrix (0.4.2)
     mini_mime (1.1.5)
     minitest (5.25.1)
+    mocha (2.4.5)
+      ruby2_keywords (>= 0.0.5)
     msgpack (1.7.2)
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
@@ -255,6 +257,7 @@ GEM
       rubocop-performance
       rubocop-rails
     ruby-progressbar (1.13.0)
+    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     securerandom (0.3.1)
     selenium-webdriver (4.23.0)
@@ -350,6 +353,7 @@ DEPENDENCIES
   httparty
   importmap-rails
   jbuilder
+  mocha
   puma (>= 5.0)
   rails (~> 7.2.1)
   rubocop-rails-omakase
