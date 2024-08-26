@@ -1,24 +1,26 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+### Installation
+To install and run this app you will need Docker installed. Once Docker is installed, run the following:
 
-* Ruby version
+```sh
+# build the docker images
+docker compose build
 
-* System dependencies
+# after build start the application
+docker compose up
 
-* Configuration
+# navigate to locahost:3000/forecasts to view
+```
 
-* Database creation
+### View the UI
+Navigate to: http://localhost:3000/forecasts
 
-* Database initialization
+### Tests
+```sh
+docker compose run -e "RAILS_ENV=test" app ./bin/rails test
+```
 
-* How to run the test suite
+### Documentation
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
