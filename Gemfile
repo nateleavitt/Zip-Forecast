@@ -57,6 +57,8 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem "webmock"
+  gem "dotenv-rails"
   gem "capybara"
   gem "selenium-webdriver"
 end
