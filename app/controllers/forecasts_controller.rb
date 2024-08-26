@@ -7,7 +7,6 @@
 # - create: Processes the input from the user, fetches weather data, and responds accordingly.
 #
 class ForecastsController < ApplicationController
-
   def index
   end
 
@@ -32,18 +31,15 @@ class ForecastsController < ApplicationController
       end
     end
 
-    # Responds with either HTML or Turbo Stream format based on the request type
+    # Responds Turbo Stream format based on the request type
     respond_to do |format|
       if @forecast.errors.empty? && @forecast.weather_data
         format.turbo_stream
-        format.html { redirect_to forecast_path(@forecast),
-                      notice: "Forecast was successfully fetched." }
       else
         # Render the new form with error messages if data fetch fails or validation fails
         format.turbo_stream { render turbo_stream:
                               turbo_stream.replace("#{helpers.dom_id(@forecast)}_form",
-                              partial: "form", locals: { forecast: @forecast }) }
-        format.html { render :new, status: :unprocessable_entity }
+                              partial: "form", locals: { forecast: @forecast }), status: :unprocessable_entity }
       end
     end
   end
