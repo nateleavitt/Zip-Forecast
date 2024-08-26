@@ -1,7 +1,7 @@
 <%= form_with(model: forecast, id: "#{dom_id(forecast)}_form") do |form| %>
   <% if forecast.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mb-6" style="border:1px solid red;">
-      <h2 class="text-1xl font-bold">Please fix the following errors:</h2>
+      <h2 class="text-1xl font-bold">Errors received:</h2>
       <ul>
         <% forecast.errors.each do |error| %>
           <li><%= error.full_message %></li>
