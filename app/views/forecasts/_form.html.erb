@@ -1,0 +1,21 @@
+<%= form_with(model: forecast, id: "#{dom_id(forecast)}_form") do |form| %>
+  <% if forecast.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(forecast.errors.count, "error") %> prohibited this forecast from being saved:</h2>
+
+      <ul>
+        <% forecast.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="flex items-stretch flex-grow">
+    <%= form.label :address, class: "sr-only" %>
+    <%= form.text_field :street, class: "block w-full rounded-none rounded-l-md sm:text-sm border-gray-300", placeholder: "Street Address" %>
+    <%= form.text_field :city, class: "block w-full rounded-none rounded-l-md sm:text-sm border-gray-300", placeholder: "City" %>
+    <%= form.text_field :state, class: "block w-full rounded-none rounded-l-md sm:text-sm border-gray-300", placeholder: "State" %>
+    <%= form.text_field :zip_code, class: "block w-full rounded-none rounded-l-md sm:text-sm border-gray-300", placeholder: "Zip" %>
+    <%= form.submit class: "-ml-px relative px-4 py-2 border border-blue-600 text-sm font-medium rounded-r-md text-white bg-blue-600 hover:bg-blue-700" %>
+  </div>
+<% end %>
