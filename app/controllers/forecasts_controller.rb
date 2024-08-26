@@ -11,8 +11,6 @@ class ForecastsController < ApplicationController
       @forecast.weather_data = WeatherManager::WeatherFetcher.call(@forecast.zip_code)
     end
 
-    puts "***** weather data: #{@forecast.weather_data}"
-
     respond_to do |format|
       # Could save here if wanting to persist the forecast
       # However, for this example, we are not persisting the forecast so we
