@@ -51,7 +51,7 @@ Ensure that you have Docker installed on your machine. The application is design
 
 2. **Navigating**:
    
-   Use the web interface to input an address (street, city, state, and zip code), and view the current and upcoming weather conditions.
+   [http://localhost:3000/forecasts](http://localhost:3000/forecasts) - Use the web interface to input an address (street, city, state, and zip code), and view the current and upcoming weather conditions.
 
 ## Tests
 
