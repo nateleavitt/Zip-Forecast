@@ -6,7 +6,9 @@ This application accepts an address as input, retrieves current weather data alo
 
 ## Prerequisites
 
-Ensure that you have Docker installed on your machine. The application is designed to run in a containerized environment for easy setup and consistent deployment.
+1. Ensure that you have Docker installed on your machine. The application is designed to run in a containerized environment for easy setup and consistent deployment.
+
+2. Signup and register for a FREE weather api key found here: [https://www.weatherapi.com/](https://www.weatherapi.com/). This key will be used to fill in the `your-api-key-here` value in the `.env` file below.
 
 ## Setup
 
