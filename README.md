@@ -21,7 +21,6 @@ Ensure that you have Docker installed on your machine. The application is design
    Example:
 
    ```sh
-   RAILS_ENV=development
    PORT=3000
    # Weather API Key
    WEATHER_API_KEY=your-api-key-here
