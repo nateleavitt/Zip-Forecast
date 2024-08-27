@@ -14,10 +14,13 @@ Ensure that you have Docker installed on your machine. The application is design
 
    Copy the `.env.example` file to `.env` and edit this file to include your API key.
 
+   ```sh
+   cp .env.example .env
+   ```
+
    Example:
 
    ```sh
-   RAILS_ENV=development
    PORT=3000
    # Weather API Key
    WEATHER_API_KEY=your-api-key-here
@@ -48,7 +51,7 @@ Ensure that you have Docker installed on your machine. The application is design
 
 2. **Navigating**:
    
-   Use the web interface to input an address (street, city, state, and zip code), and view the current and upcoming weather conditions.
+   [http://localhost:3000/forecasts](http://localhost:3000/forecasts) - Use the web interface to input an address (street, city, state, and zip code), and view the current and upcoming weather conditions.
 
 ## Tests
 
