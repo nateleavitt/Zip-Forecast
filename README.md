@@ -58,6 +58,7 @@ This application accepts an address as input, retrieves current weather data alo
 ## Tests
 
 1. **To run the provided unit tests**:
+
    Use the command to run the tests in the Docker environment.
 
    ```sh
