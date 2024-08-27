@@ -1,6 +1,6 @@
-require 'test_helper'
-require 'webmock/minitest'
-require 'httparty'
+require "test_helper"
+require "webmock/minitest"
+require "httparty"
 
 class WeatherApiTest < ActiveSupport::TestCase
   def setup
