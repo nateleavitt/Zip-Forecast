@@ -115,13 +115,6 @@ Ensure that you have Docker installed on your machine. The application is design
 
 If the API request fails or invalid data is provided, appropriate error messages are displayed to the user, and errors are logged for monitoring and debugging.
 
-## Future Improvements
-
-- **Address Validation**:
-  Currently, the application trusts user input for the address. Future versions could incorporate address validation to improve the user experience.
-- **Extended Forecast**:
-  The application could be enhanced to allow users to view an extended weather forecast (beyond 4 days) as an optional feature.
-
 ## Additional Notes
 
 - **Detailed Comments**:
