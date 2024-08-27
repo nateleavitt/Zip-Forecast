@@ -10,11 +10,10 @@ services:
     build: .
     user: root
     env_file: .env
-    working_dir: /mnt/app
-    # command: bin/rails server
+    # working_dir: /mnt/app # for development
     command: bin/rails s -p 3000 -b '0.0.0.0'
-    volumes:
-      - .:/mnt/app
+    # volumes: # for development
+    #   - .:/mnt/app
     ports:
       - 3000:3000
     links:
