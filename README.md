@@ -14,6 +14,10 @@ Ensure that you have Docker installed on your machine. The application is design
 
    Copy the `.env.example` file to `.env` and edit this file to include your API key.
 
+   ```sh
+   cp .env.example .env
+   ```
+
    Example:
 
    ```sh
