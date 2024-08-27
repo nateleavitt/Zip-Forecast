@@ -93,7 +93,7 @@ class WeatherApi
         icon: data.dig("current", "condition", "icon"),
         temperature: data.dig("current", "temp_f"),
         condition: data.dig("current", "condition", "text"),
-        location: data.dig("location", "name"),
+        location: "#{data.dig("location", "name")}, #{data.dig("location", "region")}",
         last_updated: data.dig("current", "last_updated")
       },
       days: data.dig("forecast", "forecastday").first(4).map do |day|
